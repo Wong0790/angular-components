@@ -1,8 +1,8 @@
 import {
   Component,
+  ContentChild,
   ElementRef,
   Input,
-  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -20,12 +20,14 @@ import {
 })
 export class ControlComponent {
   @Input({ required: true }) label!: string;
-  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+  @ContentChild('input') private control?: ElementRef<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
 
   constructor(private el: ElementRef) {}
 
   onClick(): void {
     console.log(this.el);
-    this.form?.nativeElement.reset();
+    console.log(this.control);
   }
 }
