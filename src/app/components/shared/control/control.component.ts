@@ -1,4 +1,10 @@
-import { Component, ElementRef, Input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -14,11 +20,12 @@ import { Component, ElementRef, Input, ViewEncapsulation } from '@angular/core';
 })
 export class ControlComponent {
   @Input({ required: true }) label!: string;
+  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
 
   constructor(private el: ElementRef) {}
 
   onClick(): void {
-    console.log('Clicked!');
     console.log(this.el);
+    this.form?.nativeElement.reset();
   }
 }
