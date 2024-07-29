@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTicketComponent implements AfterViewInit {
   @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+  title = '';
+  request = '';
 
   ngAfterViewInit(): void {
     console.log('AFTER VIEW INIT');
